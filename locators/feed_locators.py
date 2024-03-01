@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 # Кнопка последнего заказа
-LAST_ORDER_BUTTON = (By.XPATH, "//body/div[@id='root']/div[1]/main[1]/div[1]/div[1]/ul[1]/li[1]")
+LAST_ORDER_BUTTON = (By.XPATH, '//li[@class="OrderHistory_listItem__2x95r mb-6"][1]')
 # Статус "Ваш заказ готовится"
 CREATE_ORDER_STATUS = (By.XPATH, "//p[contains(text(),'Ваш заказ начали готовить')]")
 # Счётчик заказов "Выполнено за всё время"

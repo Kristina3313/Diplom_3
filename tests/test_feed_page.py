@@ -4,13 +4,14 @@ from locators.constants import MAIN_PAGE_URL
 from pages.feed_page import FeedPage
 from pages.main_page import MainPage
 from pages.profile_page import ProfilePage
+from pages.data import USER_DATA
 
 
 @allure.story('Тестирование функций на странице "Заказы"')
 class TestFeedPage:
     @allure.title('Если кликнуть на заказ, откроется всплывающее окно с деталями')
     def test_show_details_window(self, driver, register_user_fixture):
-        user_data = {'email': 'crystalkris01@yandex.ru', 'password': '24675Kris', 'name': 'Test User'}
+        user_data = USER_DATA
         register_user_fixture(user_data)
         main_page = MainPage(driver)
         main_page.go_to_site(MAIN_PAGE_URL)
@@ -26,7 +27,7 @@ class TestFeedPage:
 
     @allure.title('При создании нового заказа счётчик "Выполнено за всё время" увеличивается')
     def test_all_counter_after_create_new_order(self, driver, register_user_fixture):
-        user_data = {'email': 'crystalkris01@yandex.ru', 'password': '24675Kris', 'name': 'Test User'}
+        user_data = USER_DATA
         register_user_fixture(user_data)
         main_page = MainPage(driver)
         main_page.go_to_site(MAIN_PAGE_URL)
@@ -47,7 +48,7 @@ class TestFeedPage:
 
     @allure.title('При создании нового заказа счётчик "Выполнено за сегодня" увеличивается')
     def test_today_counter_after_create_new_order(self, driver, register_user_fixture):
-        user_data = {'email': 'crystalkris01@yandex.ru', 'password': '24675Kris', 'name': 'Test User'}
+        user_data = USER_DATA
         register_user_fixture(user_data)
         main_page = MainPage(driver)
         main_page.go_to_site(MAIN_PAGE_URL)
@@ -68,7 +69,7 @@ class TestFeedPage:
 
     @allure.title('После оформления заказа его номер появляется в разделе "В работе"')
     def test_status_in_progress_after_create_new_order(self, driver, register_user_fixture):
-        user_data = {'email': 'crystalkris01@yandex.ru', 'password': '24675Kris', 'name': 'Test User'}
+        user_data = USER_DATA
         register_user_fixture(user_data)
         main_page = MainPage(driver)
         main_page.go_to_site(MAIN_PAGE_URL)
@@ -87,7 +88,7 @@ class TestFeedPage:
 
     @allure.title('Заказы пользователя из раздела "История заказов" отображаются на странице "Лента заказов"')
     def test_similar_order_history(self, driver, register_user_fixture):
-        user_data = {'email': 'crystalkris01@yandex.ru', 'password': '24675Kris', 'name': 'Test User'}
+        user_data = USER_DATA
         register_user_fixture(user_data)
         main_page = MainPage(driver)
         main_page.go_to_site(MAIN_PAGE_URL)

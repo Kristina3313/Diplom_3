@@ -2,6 +2,7 @@ import allure
 from conftest import driver, register_user_fixture
 from locators.constants import FEED_URL, MAIN_PAGE_URL
 from pages.main_page import MainPage
+from pages.data import USER_DATA
 
 
 @allure.story('Тестирование основного функционала')
@@ -11,7 +12,7 @@ class TestMainPage:
         main_page = MainPage(driver)
         main_page.go_to_site(MAIN_PAGE_URL)
         main_page.click_order_list_button()
-        assert driver.current_url == FEED_URL
+        assert main_page.get_current_url() == FEED_URL
 
     @allure.title('Переход по клику на "Конструктор"')
     def test_redirect_to_construktor_page(self, driver):
@@ -49,7 +50,7 @@ class TestMainPage:
 
     @allure.title('Залогиненый пользователь может оформить заказ')
     def test_autorized_user_can_create_order(self, driver, register_user_fixture):
-        user_data = {'email': 'crystalkris01@yandex.ru', 'password': '24675Kris', 'name': 'Test User'}
+        user_data = USER_DATA
         register_user_fixture(user_data)
         main_page = MainPage(driver)
         main_page.go_to_site(MAIN_PAGE_URL)

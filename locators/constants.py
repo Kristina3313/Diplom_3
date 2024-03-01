@@ -6,3 +6,5 @@ PROFILE_URL = 'https://stellarburgers.nomoreparties.site/account/profile'
 ORDER_HISTORY_URL = 'https://stellarburgers.nomoreparties.site/account/order-history'
 LAST_ORDER_URL = 'https://stellarburgers.nomoreparties.site/feed/65d4cc1f9ed280001b3bbea4'
 FEED_URL = 'https://stellarburgers.nomoreparties.site/feed'
+URL_REGISTRATION = "https://stellarburgers.nomoreparties.site/api/auth/register"
+URL_DELETE = "https://stellarburgers.nomoreparties.site/api/auth/user"

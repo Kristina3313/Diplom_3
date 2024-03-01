@@ -1,5 +1,6 @@
 import allure
 from locators import profile_locators
+from locators.constants import PROFILE_URL
 from pages.base_page import BasePage
 
 
@@ -19,3 +20,7 @@ class ProfilePage(BasePage):
     @allure.step('Получение времени оформления последнего заказа(История заказов)')
     def get_time_last_order_from_profile_page(self):
         return self.find_element(profile_locators.LAST_ORDER_FROM_HISTORY).text
+
+    @allure.step("Ожидаем загрузки страницы профиля")
+    def wait_loading_profile_url(self):
+        self.wait_for_url(PROFILE_URL)

@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.service import Service as FirefoxService
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from utils.api_client import APIClient
+from locators.constants import MAIN_PAGE_URL
 
 
 @pytest.fixture(params=['chrome', 'firefox'])
@@ -17,7 +18,7 @@ def driver(request):
         service = FirefoxService(GeckoDriverManager().install())
         driver = webdriver.Firefox(service=service)
         driver.maximize_window()
-    driver.get('https://stellarburgers.nomoreparties.site')
+    driver.get(MAIN_PAGE_URL)
     yield driver
     driver.quit()
 

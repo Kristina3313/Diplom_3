@@ -1,6 +1,7 @@
 import allure
 from locators import forgot_password_locators
 from pages.base_page import BasePage
+from locators.constants import RESET_PASSWORD_URL
 
 
 class ForgotPasswordPage(BasePage):
@@ -19,3 +20,9 @@ class ForgotPasswordPage(BasePage):
     @allure.step("Получение статуса кнопки скрыть/пароль")
     def get_button_status(self):
         return self.find_element(forgot_password_locators.SHOW_PASSWORD).get_attribute("class")
+
+    @allure.step("Ожидаем загрузки страницы восстановления пароля")
+    def wait_loading_reset_url(self):
+        self.wait_for_url(RESET_PASSWORD_URL)
+
+

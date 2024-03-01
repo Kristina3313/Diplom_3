@@ -1,7 +1,4 @@
-import time
-from selenium.webdriver.support import expected_conditions as EC
 import allure
-from selenium.webdriver.support.ui import WebDriverWait
 from locators import main_locators
 from locators.constants import LOGIN_PAGE_URL
 from pages.base_page import BasePage
@@ -18,15 +15,11 @@ class MainPage(BasePage):
 
     @allure.step('Ввод email')
     def enter_email_in_login_page(self, email):
-        email_field = main_locators.EMAIL_FILED
-        WebDriverWait(self.driver, 5).until(EC.url_contains(LOGIN_PAGE_URL))
-        self.find_and_click_element(email_field).send_keys(email)
+        self.find_and_click_element(main_locators.EMAIL_FILED).send_keys(email)
 
     @allure.step('Ввод пароля')
     def enter_password_in_login_page(self, password):
-        password_filed = main_locators.PASSWORD_FILED
-        WebDriverWait(self.driver, 5).until(EC.url_contains(LOGIN_PAGE_URL))
-        self.find_and_click_element(password_filed).send_keys(password)
+        self.find_and_click_element(main_locators.PASSWORD_FILED).send_keys(password)
 
     @allure.step('Клик на кнопку "Войти"')
     def click_enter_button(self):
@@ -54,11 +47,7 @@ class MainPage(BasePage):
 
     @allure.step('Получение номера заказа')
     def get_number_order_from_window(self):
-        locator = main_locators.ORDER_NUMBER
-        initial_text = self.find_element(locator).text
-        self.wait_for_text_to_change_in_element(locator, initial_text)
-        time.sleep(2)
-        return self.find_element(locator).text
+        return self.find_element(main_locators.ORDER_NUMBER).text
 
     @allure.step('Клик на кнопку "Конструктор"')
     def click_to_construktor_button(self):
@@ -91,3 +80,11 @@ class MainPage(BasePage):
     @allure.step('Добавление булки в заказ')
     def add_bun_r2_d2_in_order(self):
         self.drag_and_drop(main_locators.BUN_R2_D3, main_locators.ADD_INGREDIENT_IN_ORDER)
+
+    @allure.step('Получение текущего URL')
+    def get_current_url(self):
+        return self.driver.current_url
+
+    @allure.step("Ожидаем загрузки страницы авторизации")
+    def wait_loading_login_url(self):
+        self.wait_for_url(LOGIN_PAGE_URL)
